@@ -26,7 +26,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     #ubuntu.vm.provision :shell, path: 'scripts/post-puppet-provisioning.sh'
 
     ubuntu.vm.provider :virtualbox do |v|
-      v.gui = true
+      v.gui = false
     end
   end 
 end
