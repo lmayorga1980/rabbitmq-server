@@ -102,7 +102,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       puppet.manifests_path = 'manifests'
       puppet.manifest_file  = 'site.pp'
       puppet.module_path    = 'modules'
-      puppet.options = '--verbose --debug'
+      puppet.options = '--verbose'
     end  
 
     #ubuntu.vm.provision :shell, path: 'scripts/post-puppet-provisioning.sh'
