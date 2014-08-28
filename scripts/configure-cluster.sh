@@ -13,3 +13,5 @@ ssh vagrant@10.11.0.102 'echo vagrant | sudo rabbitmqctl start_app'
 ssh vagrant@10.11.0.100 'echo vagrant | sudo rabbitmqctl cluster_status'
 ssh vagrant@10.11.0.101 'echo vagrant | sudo rabbitmqctl cluster_status'
 ssh vagrant@10.11.0.102 'echo vagrant | sudo rabbitmqctl cluster_status'
+
+echo 'Oh, and by the way, they're real and they're spectacular!'
