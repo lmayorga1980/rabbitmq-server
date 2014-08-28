@@ -26,7 +26,7 @@ node 'rabbitmqserver3' inherits base {
   }
 }
 
-node 'bunny1' {
-
+node 'bunny1' inherits base {
+  include client
 }
 

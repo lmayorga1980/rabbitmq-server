@@ -1,6 +1,6 @@
  puppet module list | grep puppetlabs-rabbitmq
 
- if ! [ $? -eq 0 ]; then
+  if ! [ $? -eq 0 ]; then
   puppet module install puppetlabs-rabbitmq
  fi
 

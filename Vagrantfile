@@ -16,7 +16,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     rbs1.vm.hostname = 'rabbitmqserver1'
     rbs1.vm.network   :private_network, ip: '10.11.0.100'
     rbs1.vm.provision :shell, path: 'scripts/initial-setup.sh'
-    rbs1.vm.provision :shell, path: 'scripts/install-puppet-modules.sh'
+    #rbs1.vm.provision :shell, path: 'scripts/install-puppet-modules.sh'
     rbs1.vm.provision :shell, inline: 'echo 10.11.0.101 rabbitmqserver2 >> /etc/hosts'
     rbs1.vm.provision :shell, inline: 'echo 10.11.0.102 rabbitmqserver3 >> /etc/hosts'
 
@@ -46,7 +46,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     rbs2.vm.hostname = 'rabbitmqserver2'
     rbs2.vm.network   :private_network, ip: '10.11.0.101'
     rbs2.vm.provision :shell, path: 'scripts/initial-setup.sh'
-    rbs2.vm.provision :shell, path: 'scripts/install-puppet-modules.sh'
+    #rbs2.vm.provision :shell, path: 'scripts/install-puppet-modules.sh'
     rbs2.vm.provision :shell, inline: 'echo 10.11.0.100 rabbitmqserver1 >> /etc/hosts'
     rbs2.vm.provision :shell, inline: 'echo 10.11.0.102 rabbitmqserver3 >> /etc/hosts'
 
@@ -76,7 +76,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     rbs3.vm.hostname = 'rabbitmqserver3'
     rbs3.vm.network   :private_network, ip: '10.11.0.102'
     rbs3.vm.provision :shell, path: 'scripts/initial-setup.sh'
-    rbs3.vm.provision :shell, path: 'scripts/install-puppet-modules.sh'
+    #rbs3.vm.provision :shell, path: 'scripts/install-puppet-modules.sh'
     rbs3.vm.provision :shell, inline: 'echo 10.11.0.100 rabbitmqserver1 >> /etc/hosts'
     rbs3.vm.provision :shell, inline: 'echo 10.11.0.101 rabbitmqserver2 >> /etc/hosts'
 
@@ -116,6 +116,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       puppet.module_path    = 'modules'
       puppet.options = '--verbose'
     end  
+
+    bunny.vm.provision :shell, path: 'scripts/configure-cluster.sh', privileged: false
 
     #ubuntu.vm.provision :shell, path: 'scripts/post-puppet-provisioning.sh'
 
