@@ -27,8 +27,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       puppet.options = '--verbose'
     end
 
-    #ubuntu.vm.provision :shell, path: 'scripts/post-puppet-provisioning.sh'
-
     rbs1.vm.provider :virtualbox do |v|
       v.gui = false
       v.memory = 512

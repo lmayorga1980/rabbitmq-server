@@ -28,7 +28,15 @@ class qserver($node_name, $cluster_node_type, $cluster_nodes) {
   exec { 'start rabbitmq-server':
     command   => '/usr/sbin/service rabbitmq-server start',
     logoutput => true,
+  } #->
+
+  exec {'enable-ldap':
+    command   => 'sudo rabbitmq-plugins enable rabbitmq_auth_backend_ldap',
+    logoutput => true,
+    unless    => 'sudo rabbitmq-plugins list -E | grep rabbitmq_auth_backend_ldap',
+    path      => ['/usr/sbin','/bin','/usr/bin'],
   }
+
 
   #class { 'rabbitmq':
   #  service_manage    => true,
